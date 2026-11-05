@@ -35,6 +35,10 @@ class ApplicationBaseTransaction extends RawTransaction {
   /// The boxes that should be made available for the runtime of the program.
   List<AppBoxReference>? appBoxReferences;
 
+  List<ResourceRef>? access;
+
+  int rejectVersion;
+
   ApplicationBaseTransaction.builder(
     ApplicationBaseTransactionBuilder builder,
   )   : applicationId = builder.applicationId,
@@ -44,6 +48,8 @@ class ApplicationBaseTransaction extends RawTransaction {
         foreignApps = builder.foreignApps,
         foreignAssets = builder.foreignAssets,
         appBoxReferences = builder.appBoxReferences,
+        access = builder.access,
+        rejectVersion = builder.rejectVersion,
         super(
           type: builder.type.value,
           fee: builder.fee,
@@ -74,6 +80,8 @@ class ApplicationBaseTransaction extends RawTransaction {
                   .toMessagePack(),
         )
         .toList();
+    fields['al'] = access?.map((ref) => ref.toMessagePack()).toList();
+    fields['aprv'] = rejectVersion;
 
     return fields;
   }

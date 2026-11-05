@@ -12,6 +12,4 @@ BlockResponse _$BlockResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$BlockResponseToJson(BlockResponse instance) =>
-    <String, dynamic>{
-      'block': instance.block,
-    };
+    <String, dynamic>{'block': instance.block};

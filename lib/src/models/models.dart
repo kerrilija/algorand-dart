@@ -13,6 +13,7 @@ export 'transactions/atomic_transfer.dart';
 export 'transactions/on_completion_model.dart';
 export 'transactions/payment_model.dart';
 export 'transactions/pending_transaction_model.dart';
+export 'transactions/resource_ref.dart';
 export 'transactions/signature_type.dart';
 export 'transactions/signed_transaction_model.dart';
 export 'transactions/transaction_model.dart';

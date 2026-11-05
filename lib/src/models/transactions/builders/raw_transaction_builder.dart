@@ -105,7 +105,7 @@ abstract class RawTransactionBuilder<T extends RawTransaction> {
 
   /// The suggested params to use
   set suggestedParams(TransactionParams value) {
-    _fee = value.fee;
+    suggestedFeePerByte = value.fee;
     genesisId = value.genesisId;
     genesisHash = value.genesisHash;
     firstValid = value.lastRound;
@@ -120,29 +120,24 @@ abstract class RawTransactionBuilder<T extends RawTransaction> {
     final flatFee = this.flatFee;
     final suggestedFeePerByte = this.suggestedFeePerByte;
 
-    // Fee validation
-    if (suggestedFeePerByte != null && flatFee != null) {
-      throw AlgorandException(message: 'Cannot set both fee and flat fee.');
-    }
-
-    if (suggestedFeePerByte != null) {
-      // Set the fee to calculate correct estimated transaction size
-      // see setFeeByFeePerByte in Java
-      _fee = suggestedFeePerByte;
-
-      final transactionSize = await estimatedTransactionSize();
-
-      _fee = await FeeCalculator.calculateTransactionFee(
-        transactionSize,
-        suggestedFeePerByte,
-      );
-    } else if (flatFee != null) {
+    if (flatFee != null) {
       _fee = flatFee;
-    }
+    } else {
+      if (suggestedFeePerByte != null) {
+        // Set the fee to calculate correct estimated transaction size
+        // see setFeeByFeePerByte in Java
+        _fee = suggestedFeePerByte;
+        final transactionSize = await estimatedTransactionSize();
+        _fee = await FeeCalculator.calculateTransactionFee(
+          transactionSize,
+          suggestedFeePerByte,
+        );
+      }
 
-    // Ensure min fee
-    if (fee < RawTransaction.MIN_TX_FEE_UALGOS) {
-      _fee = RawTransaction.MIN_TX_FEE_UALGOS;
+      // Ensure min fee
+      if (fee < RawTransaction.MIN_TX_FEE_UALGOS) {
+        _fee = RawTransaction.MIN_TX_FEE_UALGOS;
+      }
     }
 
     return null;

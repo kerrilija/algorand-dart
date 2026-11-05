@@ -9,7 +9,8 @@ part of 'box_names_response.dart';
 BoxNamesResponse _$BoxNamesResponseFromJson(Map<String, dynamic> json) =>
     BoxNamesResponse(
       applicationId: const BigIntSerializer().fromJson(json['application-id']),
-      boxes: (json['boxes'] as List<dynamic>?)
+      boxes:
+          (json['boxes'] as List<dynamic>?)
               ?.map((e) => BoxDescriptor.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],

@@ -12,8 +12,8 @@ MiniAssetHolding _$MiniAssetHoldingFromJson(Map<String, dynamic> json) =>
       amount: const BigIntSerializer().fromJson(json['amount']),
       isFrozen: json['is-frozen'] as bool,
       deleted: json['deleted'] as bool?,
-      optedInAtRound: json['opted-in-at-round'] as int?,
-      optedOutAtRound: json['opted-out-at-round'] as int?,
+      optedInAtRound: (json['opted-in-at-round'] as num?)?.toInt(),
+      optedOutAtRound: (json['opted-out-at-round'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$MiniAssetHoldingToJson(MiniAssetHolding instance) =>

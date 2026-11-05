@@ -32,18 +32,37 @@ class _TransactionService implements TransactionService {
   Future<TransactionIdResponse> sendTransaction(Uint8List data) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _data = Stream.fromIterable(data.map((i) => [i]));
     final _result = await _dio.request<Map<String, dynamic>>('/v2/transactions',
         queryParameters: queryParameters,
         options: dio.Options(
           method: 'POST',
-          headers: <String, dynamic>{r'Content-Type': 'application/x-binary'},
+          headers: <String, dynamic>{
+            r'Content-Type': 'application/x-binary',
+            dio.Headers.contentLengthHeader: data.length,
+          },
           extra: _extra,
           contentType: 'application/x-binary',
         ),
-        data: _data);
+        data: Stream<List<int>>.value(data));
     final value = TransactionIdResponse.fromJson(_result.data!);
     return value;
+  }
+
+  @override
+  Future<Map<String, dynamic>> simulateTransactions(Uint8List data) async {
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/v2/transactions/simulate',
+        queryParameters: <String, dynamic>{r'format': 'json'},
+        options: dio.Options(
+          method: 'POST',
+          headers: <String, dynamic>{
+            r'Content-Type': 'application/msgpack',
+            dio.Headers.contentLengthHeader: data.length,
+          },
+          contentType: 'application/msgpack',
+        ),
+        data: Stream<List<int>>.value(data));
+    return _result.data!;
   }
 
   @override

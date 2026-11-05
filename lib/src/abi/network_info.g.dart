@@ -6,11 +6,8 @@ part of 'network_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NetworkInfo _$NetworkInfoFromJson(Map<String, dynamic> json) => NetworkInfo(
-      applicationId: json['appID'] as int,
-    );
+NetworkInfo _$NetworkInfoFromJson(Map<String, dynamic> json) =>
+    NetworkInfo(applicationId: (json['appID'] as num).toInt());
 
 Map<String, dynamic> _$NetworkInfoToJson(NetworkInfo instance) =>
-    <String, dynamic>{
-      'appID': instance.applicationId,
-    };
+    <String, dynamic>{'appID': instance.applicationId};

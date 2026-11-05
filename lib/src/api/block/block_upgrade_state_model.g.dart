@@ -10,9 +10,10 @@ BlockUpgradeState _$BlockUpgradeStateFromJson(Map<String, dynamic> json) =>
     BlockUpgradeState(
       currentProtocol: json['current-protocol'] as String,
       nextProtocol: json['next-protocol'] as String?,
-      nextProtocolApprovals: json['next-protocol-approvals'] as int?,
-      nextProtocolSwitchOn: json['next-protocol-switch-on'] as int?,
-      nextProtocolVoteBefore: json['next-protocol-vote-before'] as int?,
+      nextProtocolApprovals: (json['next-protocol-approvals'] as num?)?.toInt(),
+      nextProtocolSwitchOn: (json['next-protocol-switch-on'] as num?)?.toInt(),
+      nextProtocolVoteBefore: (json['next-protocol-vote-before'] as num?)
+          ?.toInt(),
     );
 
 Map<String, dynamic> _$BlockUpgradeStateToJson(BlockUpgradeState instance) =>

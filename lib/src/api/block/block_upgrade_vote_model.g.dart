@@ -9,7 +9,7 @@ part of 'block_upgrade_vote_model.dart';
 BlockUpgradeVote _$BlockUpgradeVoteFromJson(Map<String, dynamic> json) =>
     BlockUpgradeVote(
       upgradeApprove: json['upgrade-approve'] as bool?,
-      upgradeDelay: json['upgrade-delay'] as int?,
+      upgradeDelay: (json['upgrade-delay'] as num?)?.toInt(),
       upgradePropose: json['upgrade-propose'] as String?,
     );
 

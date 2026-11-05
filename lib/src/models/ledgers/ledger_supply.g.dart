@@ -7,10 +7,10 @@ part of 'ledger_supply.dart';
 // **************************************************************************
 
 LedgerSupply _$LedgerSupplyFromJson(Map<String, dynamic> json) => LedgerSupply(
-      currentRound: json['current_round'] as int,
-      onlineMoney: json['online-money'] as int,
-      totalMoney: json['total-money'] as int,
-    );
+  currentRound: (json['current_round'] as num).toInt(),
+  onlineMoney: (json['online-money'] as num).toInt(),
+  totalMoney: (json['total-money'] as num).toInt(),
+);
 
 Map<String, dynamic> _$LedgerSupplyToJson(LedgerSupply instance) =>
     <String, dynamic>{

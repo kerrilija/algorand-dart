@@ -13,7 +13,4 @@ EvalDeltaKeyValue _$EvalDeltaKeyValueFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$EvalDeltaKeyValueToJson(EvalDeltaKeyValue instance) =>
-    <String, dynamic>{
-      'key': instance.key,
-      'value': instance.value,
-    };
+    <String, dynamic>{'key': instance.key, 'value': instance.value};

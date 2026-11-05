@@ -13,7 +13,4 @@ TealCompilation _$TealCompilationFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$TealCompilationToJson(TealCompilation instance) =>
-    <String, dynamic>{
-      'hash': instance.hash,
-      'result': instance.result,
-    };
+    <String, dynamic>{'hash': instance.hash, 'result': instance.result};

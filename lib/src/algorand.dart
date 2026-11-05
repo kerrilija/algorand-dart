@@ -305,6 +305,10 @@ class Algorand {
     );
   }
 
+  Future<SimulateResponse> simulateTransactions(SimulateRequest request) {
+    return _transactionRepository.simulateTransactions(request);
+  }
+
   /// Broadcast a list of (signed) transaction on the network.
   ///
   /// Throws an [AlgorandException] if there is an HTTP error.
@@ -422,6 +426,30 @@ class Algorand {
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  Future<AccountApplicationResponse> getAccountApplication(
+    String address,
+    int applicationId, {
+    CancelToken? cancelToken,
+  }) {
+    return _accountsApi.getAccountApplication(
+      address,
+      applicationId,
+      cancelToken: cancelToken,
+    );
+  }
+
+  Future<AccountAssetResponse> getAccountAsset(
+    String address,
+    int assetId, {
+    CancelToken? cancelToken,
+  }) {
+    return _accountsApi.getAccountAsset(
+      address,
+      assetId,
+      cancelToken: cancelToken,
     );
   }
 

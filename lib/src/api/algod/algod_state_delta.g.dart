@@ -8,7 +8,7 @@ part of 'algod_state_delta.dart';
 
 AlgodStateDelta _$AlgodStateDeltaFromJson(Map<String, dynamic> json) =>
     AlgodStateDelta(
-      action: json['at'] as int? ?? 0,
+      action: (json['at'] as num?)?.toInt() ?? 0,
       bytes: const NullableByteArraySerializer().fromJson(json['bs']),
       uint: const NullableBigIntSerializer().fromJson(json['ui']),
     );

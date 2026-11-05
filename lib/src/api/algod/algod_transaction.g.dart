@@ -9,8 +9,9 @@ part of 'algod_transaction.dart';
 AlgodTransaction _$AlgodTransactionFromJson(Map<String, dynamic> json) =>
     AlgodTransaction(
       hgi: json['hgi'] as bool? ?? false,
-      transaction: const TransactionSerializer()
-          .fromJson(json['txn'] as Map<String, dynamic>),
+      transaction: const TransactionSerializer().fromJson(
+        json['txn'] as Map<String, dynamic>,
+      ),
       signature: const NullableByteArraySerializer().fromJson(json['sig']),
       dt: json['dt'] as Map<String, dynamic>?,
     );

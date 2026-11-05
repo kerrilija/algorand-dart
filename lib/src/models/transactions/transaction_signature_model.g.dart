@@ -7,13 +7,9 @@ part of 'transaction_signature_model.dart';
 // **************************************************************************
 
 TransactionSignature _$TransactionSignatureFromJson(
-        Map<String, dynamic> json) =>
-    TransactionSignature(
-      signature: json['sig'] as String?,
-    );
+  Map<String, dynamic> json,
+) => TransactionSignature(signature: json['sig'] as String?);
 
 Map<String, dynamic> _$TransactionSignatureToJson(
-        TransactionSignature instance) =>
-    <String, dynamic>{
-      'sig': instance.signature,
-    };
+  TransactionSignature instance,
+) => <String, dynamic>{'sig': instance.signature};

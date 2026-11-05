@@ -8,8 +8,9 @@ part of 'signed_transaction_model.dart';
 
 SignedTransaction _$SignedTransactionFromJson(Map<String, dynamic> json) =>
     SignedTransaction(
-      transaction: const TransactionSerializer()
-          .fromJson(json['txn'] as Map<String, dynamic>),
+      transaction: const TransactionSerializer().fromJson(
+        json['txn'] as Map<String, dynamic>,
+      ),
       signature: const NullableByteArraySerializer().fromJson(json['sig']),
       logicSignature: json['lsig'] == null
           ? null

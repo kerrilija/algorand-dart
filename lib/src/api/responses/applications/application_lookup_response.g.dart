@@ -8,15 +8,15 @@ part of 'application_lookup_response.dart';
 
 ApplicationResponse _$ApplicationResponseFromJson(Map<String, dynamic> json) =>
     ApplicationResponse(
-      currentRound: json['current-round'] as int? ?? 0,
+      currentRound: (json['current-round'] as num?)?.toInt() ?? 0,
       application: json['application'] == null
           ? null
           : Application.fromJson(json['application'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ApplicationResponseToJson(
-        ApplicationResponse instance) =>
-    <String, dynamic>{
-      'current-round': instance.currentRound,
-      'application': instance.application,
-    };
+  ApplicationResponse instance,
+) => <String, dynamic>{
+  'current-round': instance.currentRound,
+  'application': instance.application,
+};

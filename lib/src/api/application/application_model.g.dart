@@ -7,13 +7,12 @@ part of 'application_model.dart';
 // **************************************************************************
 
 Application _$ApplicationFromJson(Map<String, dynamic> json) => Application(
-      id: json['id'] as int,
-      params:
-          ApplicationParams.fromJson(json['params'] as Map<String, dynamic>),
-      deleted: json['deleted'] as bool? ?? false,
-      createdAtRound: json['created-at-round'] as int?,
-      deletedAtRound: json['deleted-at-round'] as int?,
-    );
+  id: (json['id'] as num).toInt(),
+  params: ApplicationParams.fromJson(json['params'] as Map<String, dynamic>),
+  deleted: json['deleted'] as bool? ?? false,
+  createdAtRound: (json['created-at-round'] as num?)?.toInt(),
+  deletedAtRound: (json['deleted-at-round'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$ApplicationToJson(Application instance) =>
     <String, dynamic>{

@@ -7,9 +7,9 @@ part of 'box_reference.dart';
 // **************************************************************************
 
 BoxReference _$BoxReferenceFromJson(Map<String, dynamic> json) => BoxReference(
-      appIndex: json['i'] as int? ?? 0,
-      name: const B64ToByteArrayConverter().fromJson(json['n']),
-    );
+  appIndex: (json['i'] as num?)?.toInt() ?? 0,
+  name: const B64ToByteArrayConverter().fromJson(json['n']),
+);
 
 Map<String, dynamic> _$BoxReferenceToJson(BoxReference instance) =>
     <String, dynamic>{

@@ -10,7 +10,8 @@ DryRunResponse _$DryRunResponseFromJson(Map<String, dynamic> json) =>
     DryRunResponse(
       error: json['error'] as String? ?? '',
       protocolVersion: json['protocol-version'] as String? ?? '',
-      transactions: (json['txns'] as List<dynamic>?)
+      transactions:
+          (json['txns'] as List<dynamic>?)
               ?.map((e) => DryRunTxResult.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],

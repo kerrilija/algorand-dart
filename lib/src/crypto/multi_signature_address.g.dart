@@ -8,8 +8,8 @@ part of 'multi_signature_address.dart';
 
 MultiSigAddress _$MultiSigAddressFromJson(Map<String, dynamic> json) =>
     MultiSigAddress(
-      version: json['version'] as int? ?? 1,
-      threshold: json['threshold'] as int? ?? 2,
+      version: (json['version'] as num?)?.toInt() ?? 1,
+      threshold: (json['threshold'] as num?)?.toInt() ?? 2,
       publicKeys: json['addrs'] == null
           ? []
           : const ListAddressConverter().fromJson(json['addrs']),

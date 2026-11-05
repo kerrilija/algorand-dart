@@ -8,7 +8,7 @@ part of 'asset_parameters_model.dart';
 
 AssetParameters _$AssetParametersFromJson(Map<String, dynamic> json) =>
     AssetParameters(
-      decimals: json['decimals'] as int,
+      decimals: (json['decimals'] as num).toInt(),
       creator: json['creator'] as String,
       total: const BigIntSerializer().fromJson(json['total']),
       clawback: json['clawback'] as String?,

@@ -7,11 +7,7 @@ part of 'box_descriptor.dart';
 // **************************************************************************
 
 BoxDescriptor _$BoxDescriptorFromJson(Map<String, dynamic> json) =>
-    BoxDescriptor(
-      name: json['name'] as String,
-    );
+    BoxDescriptor(name: json['name'] as String);
 
 Map<String, dynamic> _$BoxDescriptorToJson(BoxDescriptor instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
+    <String, dynamic>{'name': instance.name};

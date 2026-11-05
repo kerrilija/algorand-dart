@@ -8,7 +8,7 @@ part of 'asset_lookup_response.dart';
 
 AssetResponse _$AssetResponseFromJson(Map<String, dynamic> json) =>
     AssetResponse(
-      currentRound: json['current-round'] as int,
+      currentRound: (json['current-round'] as num).toInt(),
       asset: Asset.fromJson(json['asset'] as Map<String, dynamic>),
     );
 

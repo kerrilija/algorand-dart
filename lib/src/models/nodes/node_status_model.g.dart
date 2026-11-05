@@ -7,23 +7,25 @@ part of 'node_status_model.dart';
 // **************************************************************************
 
 NodeStatus _$NodeStatusFromJson(Map<String, dynamic> json) => NodeStatus(
-      catchupTime: json['catchup-time'] as int,
-      lastRound: json['last-round'] as int,
-      lastVersion: json['last-version'] as String,
-      nextVersion: json['next-version'] as String,
-      nextVersionRound: json['next-version-round'] as int,
-      nextVersionSupported: json['next-version-supported'] as bool,
-      stoppedAtUnsupportedRound: json['stopped-at-unsupported-round'] as bool,
-      timeSinceLastRound: json['time-since-last-round'] as int,
-      catchpoint: json['catchpoint'] as String?,
-      catchpointAcquiredBlocks: json['catchpoint-acquired-blocks'] as int?,
-      catchpointProcessedAccounts:
-          json['catchpoint-processed-accounts'] as int?,
-      catchpointTotalAccounts: json['catchpoint-total-accounts'] as int?,
-      catchpointTotalBlocks: json['catchpoint-total-blocks'] as int?,
-      catchpointVerifiedAccounts: json['catchpoint-verified-accounts'] as int?,
-      lastCatchpoint: json['last-catchpoint'] as String?,
-    );
+  catchupTime: (json['catchup-time'] as num).toInt(),
+  lastRound: (json['last-round'] as num).toInt(),
+  lastVersion: json['last-version'] as String,
+  nextVersion: json['next-version'] as String,
+  nextVersionRound: (json['next-version-round'] as num).toInt(),
+  nextVersionSupported: json['next-version-supported'] as bool,
+  stoppedAtUnsupportedRound: json['stopped-at-unsupported-round'] as bool,
+  timeSinceLastRound: (json['time-since-last-round'] as num).toInt(),
+  catchpoint: json['catchpoint'] as String?,
+  catchpointAcquiredBlocks: (json['catchpoint-acquired-blocks'] as num?)
+      ?.toInt(),
+  catchpointProcessedAccounts: (json['catchpoint-processed-accounts'] as num?)
+      ?.toInt(),
+  catchpointTotalAccounts: (json['catchpoint-total-accounts'] as num?)?.toInt(),
+  catchpointTotalBlocks: (json['catchpoint-total-blocks'] as num?)?.toInt(),
+  catchpointVerifiedAccounts: (json['catchpoint-verified-accounts'] as num?)
+      ?.toInt(),
+  lastCatchpoint: json['last-catchpoint'] as String?,
+);
 
 Map<String, dynamic> _$NodeStatusToJson(NodeStatus instance) =>
     <String, dynamic>{

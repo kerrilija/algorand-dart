@@ -1,5 +1,6 @@
 import 'package:algorand_dart/algorand_dart.dart';
 import 'package:algorand_dart/src/api/account/account_algod_service.dart';
+import 'package:algorand_dart/src/api/account/account_resource_responses.dart';
 import 'package:dio/dio.dart';
 
 class AccountsAlgodApi {
@@ -32,6 +33,34 @@ class AccountsAlgodApi {
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
+      ),
+    );
+  }
+
+  Future<AccountApplicationResponse> getAccountApplication(
+    String address,
+    int applicationId, {
+    CancelToken? cancelToken,
+  }) async {
+    return _api.execute<AccountApplicationResponse>(
+      () => _service.getAccountApplication(
+        address: address,
+        applicationId: applicationId,
+        cancelToken: cancelToken,
+      ),
+    );
+  }
+
+  Future<AccountAssetResponse> getAccountAsset(
+    String address,
+    int assetId, {
+    CancelToken? cancelToken,
+  }) async {
+    return _api.execute<AccountAssetResponse>(
+      () => _service.getAccountAsset(
+        address: address,
+        assetId: assetId,
+        cancelToken: cancelToken,
       ),
     );
   }

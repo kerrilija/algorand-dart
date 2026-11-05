@@ -19,6 +19,10 @@ abstract class TransactionService extends ApiService {
   //@Headers(<String, dynamic>{"Content-Type": "application/x-binary"})
   Future<TransactionIdResponse> sendTransaction(/*@Body()*/ Uint8List data);
 
+  Future<Map<String, dynamic>> simulateTransactions(
+    /*@Body()*/ Uint8List data,
+  );
+
   //@GET("/v2/accounts/{address}/transactions/pending")
   Future<PendingTransactionsResponse> getPendingTransactionsByAddress(
     /*@Path('address')*/ String address, {

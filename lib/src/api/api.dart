@@ -7,4 +7,5 @@ export 'box/box.dart';
 export 'exclude.dart';
 export 'paginated_result.dart';
 export 'responses.dart';
+export 'simulate/simulate.dart';
 export 'transactions/transaction.dart';

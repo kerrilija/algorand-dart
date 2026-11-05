@@ -7,11 +7,11 @@ part of 'dry_run_source_model.dart';
 // **************************************************************************
 
 DryRunSource _$DryRunSourceFromJson(Map<String, dynamic> json) => DryRunSource(
-      appIndex: json['app-index'] as int?,
-      fieldName: json['field-name'] as String?,
-      source: json['source'] as String?,
-      txnIndex: json['txn-index'] as int?,
-    );
+  appIndex: (json['app-index'] as num?)?.toInt(),
+  fieldName: json['field-name'] as String?,
+  source: json['source'] as String?,
+  txnIndex: (json['txn-index'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$DryRunSourceToJson(DryRunSource instance) =>
     <String, dynamic>{

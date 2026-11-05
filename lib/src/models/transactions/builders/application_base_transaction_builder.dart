@@ -32,6 +32,10 @@ class ApplicationBaseTransactionBuilder<T extends ApplicationBaseTransaction>
   /// The boxes that should be made available for the runtime of the program.
   List<AppBoxReference>? appBoxReferences;
 
+  List<ResourceRef>? access;
+
+  int rejectVersion = 0;
+
   ApplicationBaseTransactionBuilder([this.onCompletion = OnCompletion.NO_OP_OC])
       : super(TransactionType.APPLICATION_CALL);
 
@@ -57,6 +61,14 @@ class ApplicationBaseTransactionBuilder<T extends ApplicationBaseTransaction>
 
   @override
   Future<ApplicationBaseTransaction> build() async {
+    if ((access?.isNotEmpty ?? false) &&
+        [accounts, foreignApps, foreignAssets, appBoxReferences]
+            .any((l) => l?.isNotEmpty ?? false)) {
+      throw AlgorandException(
+        message: 'An access list cannot be combined with accounts, '
+            'foreignApps, foreignAssets or appBoxReferences.',
+      );
+    }
     await super.build();
 
     return ApplicationBaseTransaction.builder(this);
